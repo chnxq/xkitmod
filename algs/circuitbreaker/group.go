@@ -1,7 +1,7 @@
 package circuitbreaker
 
 import (
-	"github.com/chnxq/xkitmod/aegis/internal/syncmap"
+	"github.com/chnxq/xkitmod/algs/internal/syncmap"
 )
 
 // CircuitBreakerFactory 定义一个闭包类型，用于创建 CircuitBreaker 实例

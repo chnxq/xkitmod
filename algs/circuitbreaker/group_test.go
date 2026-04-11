@@ -3,8 +3,8 @@ package circuitbreaker_test
 import (
 	"testing"
 
-	"github.com/chnxq/xkitmod/aegis/circuitbreaker"
-	"github.com/chnxq/xkitmod/aegis/circuitbreaker/sre"
+	"github.com/chnxq/xkitmod/algs/circuitbreaker"
+	"github.com/chnxq/xkitmod/algs/circuitbreaker/sre"
 	"github.com/stretchr/testify/assert"
 )
 

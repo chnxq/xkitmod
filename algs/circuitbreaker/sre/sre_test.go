@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/chnxq/xkitmod/aegis/internal/window"
+	"github.com/chnxq/xkitmod/algs/internal/window"
 	"github.com/stretchr/testify/assert"
 	"golang.org/x/exp/rand"
 )

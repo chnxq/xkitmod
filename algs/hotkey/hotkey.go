@@ -6,7 +6,7 @@ import (
 	"regexp"
 	"sync"
 
-	"github.com/chnxq/xkitmod/aegis/topk"
+	"github.com/chnxq/xkitmod/algs/topk"
 )
 
 type CacheRuleConfig struct {

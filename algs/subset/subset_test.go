@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"testing"
 
-	"github.com/chnxq/xkitmod/aegis/internal/consistent"
+	"github.com/chnxq/xkitmod/algs/internal/consistent"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"golang.org/x/exp/rand"

@@ -3,7 +3,7 @@ package key
 import (
 	"time"
 
-	"github.com/chnxq/xkitmod/aegis/internal/syncmap"
+	"github.com/chnxq/xkitmod/algs/internal/syncmap"
 	"golang.org/x/time/rate"
 )
 

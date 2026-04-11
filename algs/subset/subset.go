@@ -1,7 +1,7 @@
 package subset
 
 import (
-	"github.com/chnxq/xkitmod/aegis/internal/consistent"
+	"github.com/chnxq/xkitmod/algs/internal/consistent"
 )
 
 func Subset[M consistent.Member](selectKey string, inss []M, num int) []M {

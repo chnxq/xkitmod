@@ -3,7 +3,7 @@ package circuitbreaker_test
 import (
 	"fmt"
 
-	"github.com/chnxq/xkitmod/aegis/circuitbreaker/sre"
+	"github.com/chnxq/xkitmod/algs/circuitbreaker/sre"
 )
 
 // This is a example of using a circuit breaker Do() when return nil.

@@ -6,7 +6,7 @@ package topk
 import (
 	"math"
 
-	"github.com/chnxq/xkitmod/aegis/internal/minheap"
+	"github.com/chnxq/xkitmod/algs/internal/minheap"
 	"github.com/twmb/murmur3"
 	"golang.org/x/exp/rand"
 )

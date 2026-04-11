@@ -6,8 +6,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/chnxq/xkitmod/aegis/circuitbreaker"
-	"github.com/chnxq/xkitmod/aegis/internal/window"
+	"github.com/chnxq/xkitmod/algs/circuitbreaker"
+	"github.com/chnxq/xkitmod/algs/internal/window"
 	"golang.org/x/exp/rand"
 )
 
