@@ -1,8 +1,8 @@
-module selector
+module github.com/chnxq/xkitmod/selector
 
 go 1.26.0
 
-require github.com/chnxq/xkitmod v0.0.0-20260411100726-6b8872455ab6
+require github.com/chnxq/xkitmod v0.0.0-20260411112222-e588e756d940
 
 require (
 	golang.org/x/sys v0.43.0 // indirect
