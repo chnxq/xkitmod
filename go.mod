@@ -4,7 +4,7 @@ go 1.26.0
 
 require (
 	dario.cat/mergo v1.0.2
-	github.com/chnxq/xkitmod/log v0.0.0-20260411043701-ee2a753a6fb2
+	github.com/chnxq/xkitmod/log v0.0.0-20260411054642-d2aa55b04187
 	github.com/fsnotify/fsnotify v1.9.0
 	github.com/go-playground/form/v4 v4.3.0
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260406210006-6f92a3bedf2d
