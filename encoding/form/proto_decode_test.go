@@ -10,6 +10,7 @@ import (
 	"google.golang.org/protobuf/reflect/protoreflect"
 
 	"github.com/chnxq/xkitmod/testdata/complex"
+	"github.com/chnxq/xkitmod/testdata/filter"
 )
 
 func TestDecodeValues(t *testing.T) {
@@ -45,6 +46,59 @@ func TestDecodeValues(t *testing.T) {
 	}
 	if comp.Simples[1] != "5566" {
 		t.Errorf("want %v, got %v", "5566", comp.Simples[1])
+	}
+}
+
+func TestDecodeRepeatedMessageFieldPath(t *testing.T) {
+	query := "filterExpr.type=AND" +
+		"&filterExpr.conditions.field=name&filterExpr.conditions.op=CONTAINS&filterExpr.conditions.value=admin" +
+		"&filterExpr.conditions.field=status&filterExpr.conditions.op=EQ&filterExpr.conditions.value=ON"
+	form, err := url.ParseQuery(query)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	req := &filter.PagingRequest{}
+	if err := DecodeValues(req, form); err != nil {
+		t.Fatal(err)
+	}
+
+	filterExpr := req.GetFilterExpr()
+	if filterExpr == nil {
+		t.Fatal("filterExpr should be populated")
+	}
+	if filterExpr.GetType() != filter.ExprType_AND {
+		t.Fatalf("want filterExpr type AND, got %v", filterExpr.GetType())
+	}
+	conditions := filterExpr.GetConditions()
+	if len(conditions) != 2 {
+		t.Fatalf("want 2 conditions, got %d", len(conditions))
+	}
+	if conditions[0].GetField() != "name" || conditions[0].GetOp() != filter.Operator_CONTAINS || conditions[0].GetValue() != "admin" {
+		t.Fatalf("unexpected first condition: %+v", conditions[0])
+	}
+	if conditions[1].GetField() != "status" || conditions[1].GetOp() != filter.Operator_EQ || conditions[1].GetValue() != "ON" {
+		t.Fatalf("unexpected second condition: %+v", conditions[1])
+	}
+}
+
+func TestDecodeRepeatedMessageRepeatedLeaf(t *testing.T) {
+	form, err := url.ParseQuery("filterExpr.conditions.field=id&filterExpr.conditions.op=IN&filterExpr.conditions.values=1&filterExpr.conditions.values=2")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	req := &filter.PagingRequest{}
+	if err := DecodeValues(req, form); err != nil {
+		t.Fatal(err)
+	}
+
+	conditions := req.GetFilterExpr().GetConditions()
+	if len(conditions) != 1 {
+		t.Fatalf("want 1 condition, got %d", len(conditions))
+	}
+	if !reflect.DeepEqual(conditions[0].GetValues(), []string{"1", "2"}) {
+		t.Fatalf("want values [1 2], got %v", conditions[0].GetValues())
 	}
 }
 

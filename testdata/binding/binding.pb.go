@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        v7.34.0
-// source: test.proto
+// source: binding.proto
 
 package binding
 
@@ -39,7 +39,7 @@ type HelloRequest struct {
 
 func (x *HelloRequest) Reset() {
 	*x = HelloRequest{}
-	mi := &file_test_proto_msgTypes[0]
+	mi := &file_binding_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -51,7 +51,7 @@ func (x *HelloRequest) String() string {
 func (*HelloRequest) ProtoMessage() {}
 
 func (x *HelloRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_test_proto_msgTypes[0]
+	mi := &file_binding_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -64,7 +64,7 @@ func (x *HelloRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HelloRequest.ProtoReflect.Descriptor instead.
 func (*HelloRequest) Descriptor() ([]byte, []int) {
-	return file_test_proto_rawDescGZIP(), []int{0}
+	return file_binding_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *HelloRequest) GetName() string {
@@ -132,7 +132,7 @@ type Sub struct {
 
 func (x *Sub) Reset() {
 	*x = Sub{}
-	mi := &file_test_proto_msgTypes[1]
+	mi := &file_binding_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -144,7 +144,7 @@ func (x *Sub) String() string {
 func (*Sub) ProtoMessage() {}
 
 func (x *Sub) ProtoReflect() protoreflect.Message {
-	mi := &file_test_proto_msgTypes[1]
+	mi := &file_binding_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -157,7 +157,7 @@ func (x *Sub) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Sub.ProtoReflect.Descriptor instead.
 func (*Sub) Descriptor() ([]byte, []int) {
-	return file_test_proto_rawDescGZIP(), []int{1}
+	return file_binding_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Sub) GetName() string {
@@ -167,12 +167,11 @@ func (x *Sub) GetName() string {
 	return ""
 }
 
-var File_test_proto protoreflect.FileDescriptor
+var File_binding_proto protoreflect.FileDescriptor
 
-const file_test_proto_rawDesc = "" +
+const file_binding_proto_rawDesc = "" +
 	"\n" +
-	"\n" +
-	"test.proto\x12\abinding\x1a google/protobuf/field_mask.proto\"\xe2\x02\n" +
+	"\rbinding.proto\x12\abinding\x1a google/protobuf/field_mask.proto\"\xe2\x02\n" +
 	"\fHelloRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x1e\n" +
 	"\x03sub\x18\x02 \x01(\v2\f.binding.SubR\x03sub\x12;\n" +
@@ -193,24 +192,24 @@ const file_test_proto_rawDesc = "" +
 	"\x04name\x18\x01 \x01(\tR\x06namingB+Z)github.com/chnxq/xkitmod/testdata/bindingb\x06proto3"
 
 var (
-	file_test_proto_rawDescOnce sync.Once
-	file_test_proto_rawDescData []byte
+	file_binding_proto_rawDescOnce sync.Once
+	file_binding_proto_rawDescData []byte
 )
 
-func file_test_proto_rawDescGZIP() []byte {
-	file_test_proto_rawDescOnce.Do(func() {
-		file_test_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_test_proto_rawDesc), len(file_test_proto_rawDesc)))
+func file_binding_proto_rawDescGZIP() []byte {
+	file_binding_proto_rawDescOnce.Do(func() {
+		file_binding_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_binding_proto_rawDesc), len(file_binding_proto_rawDesc)))
 	})
-	return file_test_proto_rawDescData
+	return file_binding_proto_rawDescData
 }
 
-var file_test_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_test_proto_goTypes = []any{
+var file_binding_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_binding_proto_goTypes = []any{
 	(*HelloRequest)(nil),          // 0: binding.HelloRequest
 	(*Sub)(nil),                   // 1: binding.Sub
 	(*fieldmaskpb.FieldMask)(nil), // 2: google.protobuf.FieldMask
 }
-var file_test_proto_depIdxs = []int32{
+var file_binding_proto_depIdxs = []int32{
 	1, // 0: binding.HelloRequest.sub:type_name -> binding.Sub
 	2, // 1: binding.HelloRequest.update_mask:type_name -> google.protobuf.FieldMask
 	1, // 2: binding.HelloRequest.subField:type_name -> binding.Sub
@@ -221,27 +220,27 @@ var file_test_proto_depIdxs = []int32{
 	0, // [0:3] is the sub-list for field type_name
 }
 
-func init() { file_test_proto_init() }
-func file_test_proto_init() {
-	if File_test_proto != nil {
+func init() { file_binding_proto_init() }
+func file_binding_proto_init() {
+	if File_binding_proto != nil {
 		return
 	}
-	file_test_proto_msgTypes[0].OneofWrappers = []any{}
+	file_binding_proto_msgTypes[0].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_test_proto_rawDesc), len(file_test_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_binding_proto_rawDesc), len(file_binding_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_test_proto_goTypes,
-		DependencyIndexes: file_test_proto_depIdxs,
-		MessageInfos:      file_test_proto_msgTypes,
+		GoTypes:           file_binding_proto_goTypes,
+		DependencyIndexes: file_binding_proto_depIdxs,
+		MessageInfos:      file_binding_proto_msgTypes,
 	}.Build()
-	File_test_proto = out.File
-	file_test_proto_goTypes = nil
-	file_test_proto_depIdxs = nil
+	File_binding_proto = out.File
+	file_binding_proto_goTypes = nil
+	file_binding_proto_depIdxs = nil
 }

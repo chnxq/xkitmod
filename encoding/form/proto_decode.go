@@ -55,6 +55,9 @@ func populateFieldValues(v protoreflect.Message, fieldPath []string, values []st
 			break
 		}
 		if fd.Message() == nil || fd.Cardinality() == protoreflect.Repeated {
+			if fd.IsList() && fd.Message() != nil {
+				return populateRepeatedMessageField(fd, v.Mutable(fd).List(), fieldPath[i+1:], values)
+			}
 			if fd.IsMap() && len(fieldPath) > 1 {
 				// post subfield
 				return populateMapField(fd, v.Mutable(fd).Map(), []string{fieldPath[1]}, values)
@@ -124,6 +127,53 @@ func populateField(fd protoreflect.FieldDescriptor, v protoreflect.Message, valu
 	}
 	v.Set(fd, val)
 	return nil
+}
+
+func populateRepeatedMessageField(fd protoreflect.FieldDescriptor, list protoreflect.List, fieldPath []string, values []string) error {
+	if len(fieldPath) < 1 {
+		return errors.New("no repeated message field path")
+	}
+	if len(values) < 1 {
+		return errors.New("no value provided")
+	}
+	if !fd.IsList() || fd.Message() == nil {
+		return fmt.Errorf("field %q is not a repeated message", fd.FullName().Name())
+	}
+
+	if isRepeatedLeafField(fd.Message(), fieldPath) {
+		if list.Len() == 0 {
+			list.Append(list.NewElement())
+		}
+		return populateFieldValues(list.Get(0).Message(), fieldPath, values)
+	}
+
+	for i, value := range values {
+		for list.Len() <= i {
+			list.Append(list.NewElement())
+		}
+		if err := populateFieldValues(list.Get(i).Message(), fieldPath, []string{value}); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func isRepeatedLeafField(md protoreflect.MessageDescriptor, fieldPath []string) bool {
+	if len(fieldPath) == 0 {
+		return false
+	}
+
+	fd := getDescriptorByFieldAndName(md.Fields(), fieldPath[0])
+	if fd == nil {
+		return false
+	}
+	if len(fieldPath) == 1 {
+		return fd.IsList()
+	}
+	if fd.Message() == nil || fd.Cardinality() == protoreflect.Repeated {
+		return false
+	}
+	return isRepeatedLeafField(fd.Message(), fieldPath[1:])
 }
 
 func populateRepeatedField(fd protoreflect.FieldDescriptor, list protoreflect.List, values []string) error {

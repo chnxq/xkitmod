@@ -18,7 +18,7 @@ func TestNew(t *testing.T) {
 		{
 			name: "hello",
 			args: args{[]map[string][]string{{"hello": {"cnf"}}, {"hello2": {"go-kratos"}}}},
-			want: Metadata{"hello": {"kratos"}, "hello2": {"go-kratos"}},
+			want: Metadata{"hello": {"cnf"}, "hello2": {"go-kratos"}},
 		},
 		{
 			name: "hi",
