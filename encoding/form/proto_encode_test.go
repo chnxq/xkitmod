@@ -26,8 +26,8 @@ func TestEncodeValues(t *testing.T) {
 		Price:       11.23,
 		D:           22.22,
 		Byte:        []byte("123"),
-		Map:         map[string]string{"cnf": "https://go-cnf.dev/", "cnf_start": "https://go-kratos.dev/en/docs/getting-started/start/"},
-		MapInt64Key: map[int64]string{1: "kratos", 2: "go-zero"},
+		Map:         map[string]string{"cnf": "https://go-cnf.dev/", "cnf_start": "https://go-xkit.dev/en/docs/getting-started/start/"},
+		MapInt64Key: map[int64]string{1: "xkit", 2: "go-zero"},
 
 		Timestamp: timestamppb.New(time.Date(1970, 1, 1, 0, 0, 20, 2, time.Local)),
 		Duration:  &durationpb.Duration{Seconds: 120, Nanos: 22},
@@ -39,14 +39,14 @@ func TestEncodeValues(t *testing.T) {
 		Uint64:    &wrapperspb.UInt64Value{Value: 64},
 		Uint32:    &wrapperspb.UInt32Value{Value: 32},
 		Bool:      &wrapperspb.BoolValue{Value: false},
-		String_:   &wrapperspb.StringValue{Value: "go-kratos"},
+		String_:   &wrapperspb.StringValue{Value: "go-xkit"},
 		Bytes:     &wrapperspb.BytesValue{Value: []byte("123")},
 	}
 	query, err := EncodeValues(in)
 	if err != nil {
 		t.Fatal(err)
 	}
-	want := "a=19&age=18&b=true&bool=false&byte=MTIz&bytes=MTIz&count=3&d=22.22&double=12.33&duration=2m0.000000022s&field=1%2C2&float=12.34&id=2233&int32=32&int64=64&map%5Bcnf%5D=https%3A%2F%2Fgo-cnf.dev%2F&map%5Bcnf_start%5D=https%3A%2F%2Fgo-kratos.dev%2Fen%2Fdocs%2Fgetting-started%2Fstart%2F&map_int64_key%5B1%5D=kratos&map_int64_key%5B2%5D=go-zero&numberOne=2233&price=11.23&sex=woman&simples=3344&simples=5566&string=go-kratos&timestamp=1970-01-01T00%3A00%3A20.000000002Z&uint32=32&uint64=64&very_simple.component=5566" // nolint:lll
+	want := "a=19&age=18&b=true&bool=false&byte=MTIz&bytes=MTIz&count=3&d=22.22&double=12.33&duration=2m0.000000022s&field=1%2C2&float=12.34&id=2233&int32=32&int64=64&map%5Bcnf%5D=https%3A%2F%2Fgo-cnf.dev%2F&map%5Bcnf_start%5D=https%3A%2F%2Fgo-xkit.dev%2Fen%2Fdocs%2Fgetting-started%2Fstart%2F&map_int64_key%5B1%5D=xkit&map_int64_key%5B2%5D=go-zero&numberOne=2233&price=11.23&sex=woman&simples=3344&simples=5566&string=go-xkit&timestamp=1970-01-01T00%3A00%3A20.000000002Z&uint32=32&uint64=64&very_simple.component=5566" // nolint:lll
 	if got := query.Encode(); want != got {
 		t.Errorf("\nwant: %s, \ngot: %s", want, got)
 	}

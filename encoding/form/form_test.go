@@ -231,21 +231,21 @@ func TestProtoEncodeDecode(t *testing.T) {
 //nolint:staticcheck
 func TestDecodeStructPb(t *testing.T) {
 	req := new(ectest.StructPb)
-	query := `data={"name":"kratos"}&data_list={"name1": "kratos"}&data_list={"name2": "go-kratos"}`
+	query := `data={"name":"xkit"}&data_list={"name1": "xkit"}&data_list={"name2": "go-xkit"}`
 	if err := encoding.GetCodec(Name).Unmarshal([]byte(query), req); err != nil {
 		t.Fatal(err)
 	}
-	if "kratos" != req.Data.GetFields()["name"].GetStringValue() {
-		t.Errorf("except %v, got %v", "kratos", req.Data.GetFields()["name"].GetStringValue())
+	if "xkit" != req.Data.GetFields()["name"].GetStringValue() {
+		t.Errorf("except %v, got %v", "xkit", req.Data.GetFields()["name"].GetStringValue())
 	}
 	if len(req.DataList) != 2 {
 		t.Fatalf("except %v, got %v", 2, len(req.DataList))
 	}
-	if "kratos" != req.DataList[0].GetFields()["name1"].GetStringValue() {
-		t.Errorf("except %v, got %v", "kratos", req.Data.GetFields()["name1"].GetStringValue())
+	if "xkit" != req.DataList[0].GetFields()["name1"].GetStringValue() {
+		t.Errorf("except %v, got %v", "xkit", req.Data.GetFields()["name1"].GetStringValue())
 	}
-	if "go-kratos" != req.DataList[1].GetFields()["name2"].GetStringValue() {
-		t.Errorf("except %v, got %v", "go-kratos", req.Data.GetFields()["name2"].GetStringValue())
+	if "go-xkit" != req.DataList[1].GetFields()["name2"].GetStringValue() {
+		t.Errorf("except %v, got %v", "go-xkit", req.Data.GetFields()["name2"].GetStringValue())
 	}
 }
 
